@@ -1,0 +1,34 @@
+name: Gollum
+package: community.lazycat.app.gollum
+version: 6.1.0
+min_os_version: 1.3.8
+description: 一个简单、基于 Git 的维基，具有本地前端，并支持多种标记和内容。
+homepage: https://github.com/gollum/gollum
+author: gollum
+application:
+  subdomain: gollum
+  background_task: true
+
+  upstreams:
+    - location: /
+      backend: http://gollum:4567/
+
+services:
+  gollum:
+    user: root
+    container_name: gollum
+    #  gollumwiki/gollum:master
+    image: registry.lazycat.cloud/czyt/gollumwiki/gollum:c4a636114bfcbee8
+    binds:
+      - /lzcapp/var/data:/wiki
+    setup_script: |
+      mkdir -p /wiki
+      chown -R root:root /wiki
+
+locales:
+  zh:
+    name: "Gollum"
+    description: "一个简单、基于 Git 的维基，具有本地前端，并支持多种标记和内容。"
+  en:
+    name: "Gollum"
+    description: "A simple, Git-powered wiki with a local frontend and support for many kinds of markup and content"
