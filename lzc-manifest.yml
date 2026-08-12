@@ -1,0 +1,17 @@
+application:
+  subdomain: gollum
+  background_task: true
+  upstreams:
+    - location: /
+      backend: http://gollum:4567/
+
+services:
+  gollum:
+    user: root
+    # gollumwiki/gollum:master
+    image: registry.lazycat.cloud/czyt/gollumwiki/gollum:c4a636114bfcbee8
+    binds:
+      - /lzcapp/var/data:/wiki
+    setup_script: |
+      mkdir -p /wiki
+      chown -R root:root /wiki
