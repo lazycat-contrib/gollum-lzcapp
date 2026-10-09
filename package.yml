@@ -1,11 +1,11 @@
 package: community.lazycat.app.gollum
+license: MIT
 version: 6.1.0
 name: Gollum
 description: 一个简单、基于 Git 的维基，具有本地前端，并支持多种标记和内容。
 min_os_version: 1.5.0
 homepage: https://github.com/gollum/gollum
 author: gollum
-
 locales:
   zh:
     name: Gollum
